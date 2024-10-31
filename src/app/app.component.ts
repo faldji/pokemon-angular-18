@@ -1,17 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import {CommonModule} from "@angular/common";
+import {LogoutComponent} from "./logout/logout.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
-  `,
-  styles: [],
+  imports: [RouterOutlet, CommonModule, LogoutComponent, RouterLink],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'ng-pokemon-app';
 }
+

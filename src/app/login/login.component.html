@@ -1,0 +1,26 @@
+<div class='row'>
+  <div class="col s12 m4 offset-m4">
+    <div class="card hoverable">
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="card-content center">
+          <span class="card-title">Page de connexion</span>
+          <p><em>{{ message }}</em></p>
+          <div>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" [(ngModel)]="username" name="username" required>
+          </div>
+          <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" required>
+          </div>
+        </div>
+        <div class="card-action center">
+          <button class="btn waves-effect waves-light" type="submit" *ngIf="!authService.isLoggedIn">
+            Se connecter<i class="material-icons right">login</i>
+          </button>
+          <app-loader *ngIf="authService.isLoggedIn"></app-loader>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<h1 class="center">{{ title }}</h1>
+<div class="container">
+  <app-search-pokemon></app-search-pokemon>
+  <div class="row">
+    <div class="col m6 s12 offset-m6" *ngIf="!pokemons">
+      <app-loader></app-loader>
+    </div>
+    <div class="col m12 s12 center">
+      <a class="btn-floating btn-large red z-depth-3" title="Add new pokemon"><i class="material-icons left"
+                                                                                 routerLink="/add/pokemon">add</i>Ajouter
+        un nouveau pokemon</a>
+    </div>
+    <div class="col m3 s3" *ngFor="let pokemon of pokemons">
+      <div (click)="selectPokemon(pokemon)" borderHeight="180" class="card horizontal" pkmnBorderCard
+           borderColor="#4CAF50" borderColorHover="blue">
+        <div class="card-image">
+          <img [src]="pokemon.picture" alt="{{pokemon.name}}"/>
+        </div>
+        <div class="card-stacked">
+          <div class="card-title">{{ pokemon.name }}</div>
+          <div class="card-content">
+            <div>{{ pokemon.created | date: 'dd/MM/Y' }}</div>
+            <span *ngFor="let type of pokemon.types" class="{{type | pokemonTypeColor}}"> {{ type }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
